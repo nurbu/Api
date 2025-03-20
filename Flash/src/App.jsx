@@ -2,12 +2,13 @@ import { useState } from 'react';
 import React from 'react';
 import APIForm from './components/APIForm';
 import './App.css';
+import Gallery from './components/Gallery';
 
 const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
 function App() {
   const [curimg, setCurImg] = useState(null);
-  
+  const [prevImages, setPrevImages] = useState([]);
   const reset = () => {
     setInputs({
       url: "",
@@ -43,6 +44,7 @@ function App() {
       alert("Oops! something went wrong");
     } else {
       setCurImg(json.url);
+      setPrevImages((prevImages) => [...prevImages, json.url]);
       reset();
     }
   };
@@ -82,6 +84,10 @@ function App() {
         currentImage={curimg}
       />
       <br />
+      <div className='container'>
+      <Gallery images={prevImages} />
+    </div>
+    
     </div>
   );
 }

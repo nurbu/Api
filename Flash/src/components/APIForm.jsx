@@ -36,13 +36,26 @@ const APIForm = ({inputs, handleChange, onSubmit, currentImage}) => {
             Take that Pic!
         </button>
         {currentImage ? (<img className='screenshot'
-        src='{currentImage}'
+        src={currentImage}
         alt="Screenshot returned"/>):
         <div></div>}
-<div className='container'>
-<h3>Current Query status</h3>
-</div>
+    <div className='container'>
+    <h3>Current Query status:</h3>
+    <p>
+    https://api.apiflash.com/v1/urltoimage?access_key=ACCESS_KEY
+    <br />
+    &url ={inputs.url} <br />
+    &format ={inputs.format} <br />
+    &width = {inputs.width} <br />
+    &height = {inputs.height} <br />
+    &no_cookie_banners = {inputs.no_cookie_banners} <br />
+    &no_ads = {inputs.no_ads} <br />
+
+    </p>
+
     </div>
+    
+        </div>
   )
 }
 
